@@ -4,14 +4,7 @@ import Combobox from "../ComboBox";
 import Button from "../Button";
 import { useState } from "react";
 
-const Form = () => {
-  const times = [
-    "Programação",
-    "Front-end",
-    "Devops",
-    "UX e design",
-    "Inovação e gestão",
-  ];
+const Form = (props) => {
 
   const [nome, setNome] = useState("");
   const [cargo, setCargo] = useState("");
@@ -20,7 +13,9 @@ const Form = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("teste");
+    props.registerHandler({
+      nome,cargo,imagem,time
+    })
   };
 
   return (
@@ -45,7 +40,7 @@ const Form = () => {
           label="Imagem"
           placeholder="Digite o endereço da imagem"
         />
-        <Combobox value={time} setValue={e=>setTime(e)} label="times" itens={times}></Combobox>
+        <Combobox value={time} setValue={e=>setTime(e)} label="times" itens={props.teams}></Combobox>
         <Button>Criar card</Button>
       </form>
     </section>

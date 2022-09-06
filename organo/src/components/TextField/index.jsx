@@ -2,15 +2,16 @@ import "./TextField.css";
 
 const TextField = (props) => {
 
-  const keyPressHandler = (event) => {
+  const onChangeHandler = (event) => {
     props.setValue(event.target.value);
   };
+
   return (
     <div className="text-field">
       <label htmlFor="">{props.label}</label>
       <input
         value={props.value}
-        onChange={keyPressHandler}
+        onChange={onChangeHandler}
         required={props.required}
         placeholder={props.placeholder}
         type="text"
