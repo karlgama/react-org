@@ -45,6 +45,7 @@ function App() {
   const [employees, setEmployees] = useState([]);
 
   const registerHandler = (employee) => {
+    debugger
     setEmployees([...employees, employee]);
   };
 
