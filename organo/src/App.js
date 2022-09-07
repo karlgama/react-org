@@ -45,7 +45,6 @@ function App() {
   const [employees, setEmployees] = useState([]);
 
   const registerHandler = (employee) => {
-    console.log(employee);
     setEmployees([...employees, employee]);
   };
 
@@ -62,6 +61,7 @@ function App() {
           secondaryColor={team.secondaryColor}
           key={team.name}
           name={team.name}
+          workers={employees.filter((employe) => employe.team === team.name)}
         />
       ))}
     </div>

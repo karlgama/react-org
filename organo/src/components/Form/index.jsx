@@ -5,42 +5,53 @@ import Button from "../Button";
 import { useState } from "react";
 
 const Form = (props) => {
-
-  const [nome, setNome] = useState("");
-  const [cargo, setCargo] = useState("");
-  const [imagem, setImagem] = useState("");
-  const [time, setTime] = useState("");
+  const [name, setName] = useState("");
+  const [role, setRole] = useState("");
+  const [img, setImg] = useState("");
+  const [team, setTeam] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
     props.registerHandler({
-      nome,cargo,imagem,time
-    })
+      name,
+      role,
+      img,
+      team,
+    });
+    setName("");
+    setRole("");
+    setImg("");
+    setTeam("");
   };
 
   return (
     <section className="form">
       <form onSubmit={handleSubmit}>
         <TextField
-          value={nome}
-          setValue={(value) => setNome(value)}
+          value={name}
+          setValue={(value) => setName(value)}
           required={true}
           label="Nome"
           placeholder="Digite seu nome"
         />
         <TextField
-          value={cargo}
-          setValue={(value) => setCargo(value)}
+          value={role}
+          setValue={(value) => setRole(value)}
           label="Cargo"
           placeholder="Digite seu cargo"
         />
         <TextField
-          value={imagem}
-          setValue={(value) => setImagem(value)}
+          value={img}
+          setValue={(value) => setImg(value)}
           label="Imagem"
           placeholder="Digite o endereço da imagem"
         />
-        <Combobox value={time} setValue={e=>setTime(e)} label="times" itens={props.teams}></Combobox>
+        <Combobox
+          value={team}
+          setValue={(e) => setTeam(e)}
+          label="times"
+          itens={props.teams}
+        ></Combobox>
         <Button>Criar card</Button>
       </form>
     </section>
